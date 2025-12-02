@@ -23,7 +23,7 @@ echo "The 10 largest files are: "
 echo "$largest"
 ;;
 OldestFiles)
-oldest=$(ls -ltr "$HOME" | head | awk '{print $6, $7, $8, $9}')
+oldest=$(ls -lt "$HOME" | tail -10)
 echo "The 10 oldest files are: "
 echo "$oldest"
 ;;
@@ -33,5 +33,6 @@ break
 ;;
 *)
 echo "Invalid option!"
+break
 esac
 done
