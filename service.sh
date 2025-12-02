@@ -6,15 +6,15 @@ case $serviceMgmt in
 
 ActiveStatus)
 echo "Selected option is: $serviceMgmt"
-systemctl list-units --type=service | grep "running"
+systemctl list-units --type=service --state=running
 ;;
 
 Start)
 read -p "What service would you like to start: " startsrvc
-if systemctl list-unit-files "$startsrvc.service" &>/dev/null
+ if systemctl list-unit-files | grep -q "$startsrvc.service"
 then
+sudo systemctl start "$startsrvc.service"
 echo "This serice $startsrvc exists and has been started!"
-sudo systemctl start "$startsrvc"
 else
 echo "This service $startsrvc does not exist"
 fi
@@ -22,21 +22,21 @@ fi
 
 Stop)
 read -p "What service would you like to stop: " stopsrvc
-if systemctl list-unit-files "$stopsrvc.service" &>/dev/null
+if systemctl list-unit-files | grep -q "$stopsrvc.service"
 then
+sudo systemctl stop "$stopsrvc.service"
 echo "This service $stopsrvc exists and has been stopped!"
-sudo systemctl stop "$stopsrvc"
 else
 echo "This service $stopsrvc does not exist"
 fi
 ;;
-
 Exit)
-echo "You have exited the program."
+echo "You have exited the program!"
 break
 ;;
 *)
 echo "Not a valid option, you have exit the menu!"
+break
 ;;
 esac
 done
