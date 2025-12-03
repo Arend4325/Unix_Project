@@ -2,13 +2,13 @@
 menu() {
 
 	echo ""
-	echo "==== NETWORK MANAGEMENT MENU ===="
+	echo " NETWORK MANAGEMENT MENU "
 	echo "1) Display Network Interfaces, IP Adresses & Default Gateways"
 	echo "2) Enable or Disable a Network Interface"
         echo "3) Assign IP address to Network Card"
         echo "4) Display Wi-Fi networks"
         echo "5) Exit"
-	echo "================================="
+	echo ""
 
 }
 
@@ -24,7 +24,7 @@ display_networkInterfaces() {
 			echo "Interface: $interface, No IP Address assigned"
 		fi
 	done
-
+ 
 	echo ""
 	echo "Default Gateways: "
 	ip route show default
@@ -79,12 +79,6 @@ assign_IP() {
 display_wifiNetworks() {
 	echo ""
 	echo "Available Wifi-Networks"
-
-	echo "testing vmare wifi"
-	if ! nmcli dev status | grep -qw wifi; then
-		echo -e "testing to see if wifi shows"
-		return
-	fi
 
 	nmcli device wifi list
 

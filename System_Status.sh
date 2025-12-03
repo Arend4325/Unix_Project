@@ -1,12 +1,12 @@
 menu() {
     echo ""
-    echo "===== SYSTEM STATUS MENU ====="
+    echo " SYSTEM STATUS MENU "
     echo "1) Display Memory Usage"
     echo "2) Check CPU Temp"
     echo "3) List Active System Processes"
     echo "4) Stop a process"
     echo "5) Exit"
-    echo "=============================="
+    echo ""
 }
 
 
@@ -40,7 +40,7 @@ list_systems() {
 process_menu() {
 
 	echo ""
-	echo "===== PROCESS MENU ====="
+	echo " PROCESS MENU "
 	echo "1) Stop  process"
 	echo "2) Terminate a process"
 	echo "3) Exit"

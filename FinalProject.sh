@@ -43,13 +43,13 @@ System_Status() {
 
 	menu() {
 	    echo ""
-	    echo "===== SYSTEM STATUS MENU ====="
+	    echo " SYSTEM STATUS MENU "
 	    echo "1) Display Memory Usage"
 	    echo "2) Check CPU Temp"
 	    echo "3) List Active System Processes"
 	    echo "4) Stop a process"
 	    echo "5) Exit"
-	    echo "=============================="
+	    echo ""
 	}
 
 
@@ -84,7 +84,7 @@ System_Status() {
 	process_menu() {
 
 	        echo ""
-	        echo "===== PROCESS MENU ====="
+	        echo " PROCESS MENU "
 	        echo "1) Stop  process"
 	        echo "2) Terminate a process"
 	        echo "3) Exit"
@@ -99,11 +99,11 @@ System_Status() {
 
 	                case $opt in
 	                        1)
-	                                echo "============= ACTIVE PROCESSES ============="
+	                                echo " ACTIVE PROCESSES: "
 	                                printf "%-7s %-15s %-7s %-15s %-7s %-15s\n" \
 	                                       "PID" "COMMAND" "PID" "COMMAND" "PID" "COMMAND"
 	                                ps -u $USER -o pid:10,comm:25 --sort=pid --no-headers |column -t | paste - - - | column -t
-	                                echo "============================================"
+	                                echo ""
 	                                echo ""
 
 	                                read -p "Enter the PID of the process to stop: " process
@@ -112,11 +112,10 @@ System_Status() {
 
 
         	                2)
-                	                echo "============= ACTIVE PROCESSES ============="
+                	                echo " ACTIVE PROCESSES: "
                         	        printf "%-7s %-15s %-7s %-15s %-7s %-15s\n" \
                                 	       "PID" "COMMAND" "PID" "COMMAND" "PID" "COMMAND"
 	                                ps -u $USER -o pid:10,comm:25 --sort=pid --no-headers | column -t | paste - - - | column -t
-        	                        echo "============================================"
                 	                echo ""
 
 
@@ -219,13 +218,13 @@ Network() {
 	menu() {
 
 	        echo ""
-	        echo "==== NETWORK MANAGEMENT MENU ===="
+	        echo " NETWORK MANAGEMENT MENU "
 	        echo "1) Display Network Interfaces, IP Adresses & Default Gateways"
 	        echo "2) Enable or Disable a Network Interface"
 	        echo "3) Assign IP address to Network Card"
 	        echo "4) Display Wi-Fi networks"
 	        echo "5) Exit"
-	        echo "================================="
+	        echo ""
 
 	}
 
@@ -291,14 +290,8 @@ Network() {
 	}
 
 	display_wifiNetworks() {
- 	       echo ""
+		echo ""
 	        echo "Available Wifi-Networks"
-
-	        echo "testing vmare wifi"
-	        if ! nmcli dev status | grep -qw wifi; then
-	                echo -e "testing to see if wifi shows"
-	                return
-	        fi
 
 	        nmcli device wifi list
 
